@@ -297,23 +297,6 @@
     window.location.href = mailtoURL;
   }
 
-  // ---- Store in MongoDB (using Node.js API backend) ----
-  async function submitDB() {
-    const data = getFormData();
-
-    const response = await fetch("http://localhost:4000/save-contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-      alert("Saved to DB successfully!");
-    } else {
-      alert("Failed to save in DB.");
-    }
-  }
-
 </script>
 
 

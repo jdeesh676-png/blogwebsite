@@ -12,7 +12,6 @@ body{
   color:#fff;
   background:linear-gradient(135deg,#003d66,#000);
   background-attachment:fixed;
-  scroll-behavior:smooth;
 }
 
 /* NAVBAR */
@@ -25,111 +24,99 @@ header{
 nav{display:flex;justify-content:space-between;align-items:center;padding:15px 40px}
 nav .logo{font-size:1.6rem;font-weight:700;color:#00eaff;text-shadow:0 0 6px #00eaff}
 nav ul{list-style:none;display:flex;gap:25px}
-nav a{
-  color:#fff;text-decoration:none;font-size:1rem;
-  padding:6px 12px;border-radius:8px;transition:.3s
-}
-nav a:hover{
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 10px rgba(0,238,255,.5)
-}
+nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:8px}
+nav a:hover{background:rgba(255,255,255,.1)}
 
 /* HERO */
 #hero{
   height:90vh;display:flex;flex-direction:column;
-  justify-content:center;align-items:center;text-align:center;
-  padding:20px;color:#e6ffff
+  justify-content:center;align-items:center;text-align:center
 }
-#hero h1{
-  font-size:3rem;margin-bottom:15px;
-  text-shadow:0 0 20px rgba(0,238,255,.7)
-}
-#hero p{max-width:600px;font-size:1.2rem;opacity:.95}
-#hero button{
-  margin-top:35px;padding:14px 28px;font-size:1.1rem;
-  border:none;cursor:pointer;border-radius:10px;
-  color:#000;background:#00eaff;font-weight:600;
-  box-shadow:0 0 12px rgba(0,238,255,.8);
-  transition:.3s
-}
-#hero button:hover{transform:scale(1.06);box-shadow:0 0 20px rgba(0,238,255,1)}
+#hero h1{font-size:3rem}
+#hero button{margin-top:25px;padding:12px 20px;border-radius:10px;border:none;background:#00eaff}
 
-/* FEATURES */
-#features{padding:80px 20px}
-#features h2{text-align:center;margin-bottom:35px;font-size:2rem}
-.feature-grid{display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
-.feature-card{
-  width:280px;padding:25px;text-align:center;border-radius:18px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.3);
-  backdrop-filter:blur(12px);
-  transition:.3s
+/* FEATURES GRID — fixed */
+#features{padding:70px 20px}
+#features h2{text-align:center;margin-bottom:35px}
+.feature-grid{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
 }
-.feature-card:hover{transform:translateY(-8px)}
+.feature-card{
+  padding:22px;text-align:center;border-radius:18px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(0,255,255,.35);
+  backdrop-filter:blur(12px);
+}
 
 /* CONTACT MODAL */
 .contact-modal{
   display:none;position:fixed;inset:0;
-  backdrop-filter:blur(6px);
   background:rgba(0,0,0,.5);
+  backdrop-filter:blur(6px);
   justify-content:center;align-items:center;z-index:999
 }
 .contact-content{
   width:350px;padding:25px;border-radius:20px;
   background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.25);
-  backdrop-filter:blur(15px);
 }
-.close-btn{float:right;font-size:28px;cursor:pointer}
-.contact-form{display:flex;flex-direction:column;gap:12px;margin-top:15px}
-.contact-form input,
-.contact-form textarea{
-  padding:12px;border:none;border-radius:10px;
-  background:rgba(255,255,255,.15);color:#fff;
+.close-btn{float:right;font-size:26px;cursor:pointer}
+.contact-form{display:flex;flex-direction:column;gap:12px}
+.contact-form input,.contact-form textarea{
+  padding:12px;border-radius:10px;border:none;
+  background:rgba(255,255,255,.14);color:#fff;
 }
 .contact-buttons button{
-  margin-top:8px;padding:12px;border:none;border-radius:10px;
-  background:#00eaff;color:#000;font-weight:700;cursor:pointer
+  padding:12px;border-radius:10px;border:none;
+  background:#00eaff;color:#000;font-weight:700;margin-top:8px;
 }
 
 /* SUCCESS TOAST */
 .toast{
-  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
-  padding:14px 22px;border-radius:14px;
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:14px 22px;
+  border-radius:14px;
   background:rgba(0,255,200,.25);
   border:1px solid rgba(0,255,200,.6);
   backdrop-filter:blur(10px);
-  display:none;opacity:0;transition:.4s
+  display:none;
+  opacity:0;
+  transition:.4s;
 }
 
 /* THANK YOU SCREEN */
 .thankyou{
-  position:fixed;inset:0;background:rgba(0,0,0,.7);
+  position:fixed;inset:0;background:rgba(0,0,0,.75);
   backdrop-filter:blur(8px);display:none;
   justify-content:center;align-items:center;z-index:9999
 }
 .thankyou-box{
   width:320px;padding:25px;border-radius:20px;
-  background:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.15);
   text-align:center
 }
 .tick{font-size:48px;color:#00ff9c}
-
 </style>
 </head>
 
 <body>
 
 <header>
-  <nav>
-    <div class="logo">Jagadeesh Kusupati</div>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#" id="contactBtn">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+<div class="logo">Jagadeesh Kusupati</div>
+<ul>
+  <li><a href="#hero">Home</a></li>
+  <li><a href="#features">Features</a></li>
+  <li><a href="#" id="contactBtn">Contact</a></li>
+</ul>
+</nav>
 </header>
 
 <section id="hero">
@@ -139,42 +126,44 @@ nav a:hover{
 </section>
 
 <section id="features">
-  <h2>Features</h2>
-  <div class="feature-grid">
-    <div class="feature-card">Responsive UI</div>
-    <div class="feature-card">Glassmorphism Design</div>
-    <div class="feature-card">Mobile Friendly</div>
-  </div>
+<h2>Features</h2>
+<div class="feature-grid">
+  <div class="feature-card">Responsive UI</div>
+  <div class="feature-card">Glassmorphism Design</div>
+  <div class="feature-card">Smooth Animations</div>
+  <div class="feature-card">Mobile Friendly</div>
+  <div class="feature-card">Fast Performance</div>
+  <div class="feature-card">Modern Development</div>
+</div>
 </section>
 
 <!-- CONTACT MODAL -->
 <div class="contact-modal" id="contactModal">
-  <div class="contact-content">
-    <span class="close-btn" id="closeModal">&times;</span>
-    <h2>Contact Us</h2>
+<div class="contact-content">
+<span class="close-btn" id="closeModal">&times;</span>
+<h2>Contact Us</h2>
 
-    <form class="contact-form" onsubmit="return false;">
-      <label>Name</label>
-      <input id="name" type="text">
+<form class="contact-form" onsubmit="return false;">
+<label>Name</label>
+<input id="name" type="text">
 
-      <label>Mobile</label>
-      <input id="mobile" type="tel">
+<label>Mobile Number</label>
+<input id="mobile" type="tel">
 
-      <label>Requirement</label>
-      <textarea id="requirement"></textarea>
+<label>Requirement</label>
+<textarea id="requirement"></textarea>
 
-      <div class="contact-buttons">
-        <button onclick="submitWhatsApp()">WhatsApp Submit</button>
-        <button onclick="submitEmail()">Email Submit</button>
-      </div>
-    </form>
-
-  </div>
+<div class="contact-buttons">
+  <button type="button" onclick="submitWhatsApp()">WhatsApp Submit</button>
+  <button type="button" onclick="submitEmail()">Email Submit</button>
+</div>
+</form>
+</div>
 </div>
 
 <footer>© Jagadeesh Kusupati 2025</footer>
 
-<!-- SUCCESS POPUP -->
+<!-- SUCCESS TOAST -->
 <div id="successPopup" class="toast"></div>
 
 <!-- THANK YOU -->
@@ -182,26 +171,25 @@ nav a:hover{
   <div class="thankyou-box">
     <div class="tick">✔</div>
     <h2>Thank You</h2>
-    <p>We will contact you soon.</p>
+    <p>We received your request</p>
+    <p>We will contact you soon</p>
     <button onclick="closeThankYou()">Close</button>
   </div>
 </div>
 
 <script>
+
+/* Smooth Scroll */
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-/* OPEN / CLOSE CONTACT MODAL */
-const contactBtn=document.getElementById("contactBtn");
-const contactModal=document.getElementById("contactModal");
-const closeModal=document.getElementById("closeModal");
-
+/* Contact Modal Logic */
 contactBtn.onclick=()=>contactModal.style.display="flex";
 closeModal.onclick=()=>contactModal.style.display="none";
 window.onclick=e=>{if(e.target===contactModal)contactModal.style.display="none"};
 
-/* SUCCESS TOAST */
+/* Toast Popup */
 function showSuccess(msg){
   const p=document.getElementById("successPopup");
   p.innerText=msg;
@@ -210,11 +198,11 @@ function showSuccess(msg){
   setTimeout(()=>{p.style.opacity="0";setTimeout(()=>p.style.display="none",400)},2000);
 }
 
-/* THANK YOU SCREEN */
-const showThankYou=()=>thankYouScreen.style.display="flex";
-const closeThankYou=()=>thankYouScreen.style.display="none";
+/* Thank You Screen */
+function showThankYou(){thankYouScreen.style.display="flex"}
+function closeThankYou(){thankYouScreen.style.display="none"}
 
-/* GET FORM DATA */
+/* Get Form Data */
 function getFormData(){
   return{
     name:name.value.trim(),
@@ -223,47 +211,58 @@ function getFormData(){
   };
 }
 
-/* VALIDATION */
+/* Validation */
 function validateForm(d){
-  if(!d.name){alert("Enter name");return false}
+  if(!d.name){alert("Enter your name");return false}
   if(!d.mobile || d.mobile.length<10){alert("Enter valid mobile");return false}
   if(!d.requirement){alert("Enter requirement");return false}
   return true;
 }
 
-/* WHATSAPP */
+/* WHATSAPP SUBMIT */
 function submitWhatsApp(){
+
   const d=getFormData();
   if(!validateForm(d))return;
 
-  const msg=encodeURIComponent(`Name: ${d.name}
+  const msg=encodeURIComponent(
+`New Contact Request
+Name: ${d.name}
 Mobile: ${d.mobile}
-Requirement: ${d.requirement}`);
+Requirement: ${d.requirement}`
+  );
 
   const phone="919490556392";
 
-  if(/Android|iPhone|iPad/i.test(navigator.userAgent))
+  // Mobile -> WhatsApp App
+  if(/Android|iPhone|iPad/i.test(navigator.userAgent)){
     window.location.href=`whatsapp://send?phone=${phone}&text=${msg}`;
-  else
-    window.open(`https://wa.me/${phone}?text=${msg}`);
+  }
+  else{
+    // Desktop -> WhatsApp Web
+    window.open(`https://wa.me/${phone}?text=${msg}`,"_blank");
+  }
 
-  showSuccess("Opening WhatsApp…");
+  showSuccess("Message sent via WhatsApp");
   showThankYou();
 }
 
-/* EMAIL */
+/* EMAIL SUBMIT */
 function submitEmail(){
+
   const d=getFormData();
   if(!validateForm(d))return;
 
-  const body=encodeURIComponent(`Name: ${d.name}
+  const body=encodeURIComponent(
+`Name: ${d.name}
 Mobile: ${d.mobile}
-Requirement: ${d.requirement}`);
+Requirement: ${d.requirement}`
+  );
 
   window.location.href=
-  `mailto:kusupatijagadeesh@gmail.com?subject=New Contact&body=${body}`;
+  `mailto:kusupatijagadeesh@gmail.com?subject=New Contact Request&body=${body}`;
 
-  showSuccess("Opening email…");
+  showSuccess("Opening Email…");
   showThankYou();
 }
 </script>

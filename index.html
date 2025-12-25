@@ -1,271 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jagadeesh Kusupati - Glassmorphism</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jagadeesh Kusupati - Glassmorphism</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:"Segoe UI",sans-serif;
-  color:#fff;
-  background:linear-gradient(135deg,#003d66,#000);
-  background-attachment:fixed;
-}
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      color:#fff;
+      background: linear-gradient(135deg,#003d66,#000);
+      background-attachment: fixed;
+      scroll-behavior:smooth;
+    }
 
-/* NAVBAR */
-header{
-  position:sticky;top:0;z-index:1000;
-  backdrop-filter:blur(12px);
-  background:rgba(255,255,255,.05);
-  border-bottom:1px solid rgba(255,255,255,.2)
-}
-nav{display:flex;justify-content:space-between;align-items:center;padding:15px 40px}
-nav .logo{font-size:1.6rem;font-weight:700;color:#00eaff;text-shadow:0 0 6px #00eaff}
-nav ul{list-style:none;display:flex;gap:25px}
-nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:8px}
-nav a:hover{background:rgba(255,255,255,.1)}
+    /* ---------------- NAVBAR ---------------- */
+    header {
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    nav {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 40px;
+    }
+    nav .logo {
+      font-size:1.6rem; font-weight:700; color:#00eaff;
+      text-shadow:0 0 6px #00eaff;
+    }
+    nav ul { list-style:none; display:flex; gap:25px; }
+    nav a {
+      color:#fff; text-decoration:none; font-size:1rem;
+      padding:6px 12px; border-radius:8px; transition:0.3s;
+    }
+    nav a:hover {
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 10px rgba(0,238,255,0.5);
+    }
 
-/* HERO */
-#hero{
-  height:90vh;display:flex;flex-direction:column;
-  justify-content:center;align-items:center;text-align:center
-}
-#hero h1{font-size:3rem}
-#hero button{margin-top:25px;padding:12px 20px;border-radius:10px;border:none;background:#00eaff}
+    /* ---------------- HERO ---------------- */
+    #hero {
+      height:90vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:center; text-align:center;
+      padding:20px; color:#e6ffff;
+    }
+    #hero h1 {
+      font-size:3rem; margin-bottom:15px;
+      text-shadow:0 0 20px rgba(0,238,255,0.7);
+    }
+    #hero p {
+      max-width:600px; font-size:1.2rem; opacity:.95;
+    }
+    #hero button {
+      margin-top:35px; padding:14px 28px; font-size:1.1rem;
+      border:none; cursor:pointer; border-radius:10px;
+      color:#000; background:#00eaff; font-weight:600;
+      backdrop-filter:blur(8px);
+      box-shadow:0 0 12px rgba(0,238,255,0.8);
+      transition:0.3s;
+    }
+    #hero button:hover {
+      transform:scale(1.06);
+      box-shadow:0 0 20px rgba(0,238,255,1);
+    }
 
-/* FEATURES GRID — fixed */
-#features{padding:70px 20px}
-#features h2{text-align:center;margin-bottom:35px}
-.feature-grid{
-  max-width:1050px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
-}
-.feature-card{
-  padding:22px;text-align:center;border-radius:18px;
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(0,255,255,.35);
-  backdrop-filter:blur(12px);
-}
+    /* ---------------- FEATURES ---------------- */
+    #features {
+      padding:80px 20px;
+    }
+    #features h2 {
+      font-size:2rem; text-align:center; margin-bottom:35px;
+      text-shadow:0 0 10px rgba(255,255,255,0.5);
+    }
+    .feature-grid {
+      display:flex; justify-content:center; gap:25px;
+      flex-wrap:wrap;
+    }
+    .feature-card {
+      width:280px; padding:25px; text-align:center;
+      border-radius:18px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.3);
+      backdrop-filter:blur(12px);
+      box-shadow:0 0 12px rgba(0,238,255,0.3);
+      transition:0.3s;
+      font-size:1.1rem;
+    }
+    .feature-card:hover {
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(0,238,255,0.7);
+    }
 
-/* CONTACT MODAL */
+    /* ---------------- FOOTER ---------------- */
+    footer {
+      margin-top:70px; padding:25px; text-align:center;
+      background:rgba(255,255,255,0.05);
+      border-top:1px solid rgba(255,255,255,0.2);
+      backdrop-filter:blur(10px);
+    }
+
+   /* ---------- CONTACT FORM GLASS ---------- */
 .contact-modal{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.5);
-  backdrop-filter:blur(6px);
-  justify-content:center;align-items:center;z-index:999
-}
-.contact-content{
-  width:350px;padding:25px;border-radius:20px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.25);
-}
-.close-btn{float:right;font-size:26px;cursor:pointer}
-.contact-form{display:flex;flex-direction:column;gap:12px}
-.contact-form input,.contact-form textarea{
-  padding:12px;border-radius:10px;border:none;
-  background:rgba(255,255,255,.14);color:#fff;
-}
-.contact-buttons button{
-  padding:12px;border-radius:10px;border:none;
-  background:#00eaff;color:#000;font-weight:700;margin-top:8px;
-}
-
-/* SUCCESS TOAST */
-.toast{
-  position:fixed;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  padding:14px 22px;
-  border-radius:14px;
-  background:rgba(0,255,200,.25);
-  border:1px solid rgba(0,255,200,.6);
-  backdrop-filter:blur(10px);
   display:none;
-  opacity:0;
-  transition:.4s;
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
 }
 
-/* THANK YOU SCREEN */
-.thankyou{
-  position:fixed;inset:0;background:rgba(0,0,0,.75);
-  backdrop-filter:blur(8px);display:none;
-  justify-content:center;align-items:center;z-index:9999
+.contact-content{
+  width:350px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.25);
+  backdrop-filter:blur(15px);
+  color:white;
+  animation:pop 0.35s ease;
 }
-.thankyou-box{
-  width:320px;padding:25px;border-radius:20px;
-  background:rgba(255,255,255,.15);
-  text-align:center
+
+@keyframes pop{
+  from{transform:scale(0.7); opacity:0;}
+  to{transform:scale(1); opacity:1;}
 }
-.tick{font-size:48px;color:#00ff9c}
-</style>
+
+.close-btn{
+  float:right;
+  font-size:28px;
+  cursor:pointer;
+  color:white;
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:12px;
+  border:none; outline:none;
+  border-radius:10px;
+  color:white;
+  background:rgba(255,255,255,0.15);
+}
+
+.contact-form button{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:rgba(0,238,255,0.7);
+  color:black;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 0 10px rgba(0,238,255,0.6);
+  transition:0.3s;
+}
+.contact-form button:hover{
+  box-shadow:0 0 20px rgba(0,238,255,1);
+  transform:scale(1.05);
+}
+
+  </style>
 </head>
+
 
 <body>
 
-<header>
-<nav>
-<div class="logo">Jagadeesh Kusupati</div>
-<ul>
-  <li><a href="#hero">Home</a></li>
-  <li><a href="#features">Features</a></li>
-  <li><a href="#" id="contactBtn">Contact</a></li>
-</ul>
-</nav>
-</header>
+  <!-- NAV -->
+  <header>
 
-<section id="hero">
-  <h1>Welcome to My Portfolio</h1>
-  <p>I design & build modern web applications.</p>
-  <button onclick="scrollToSection('features')">✨ Explore Features</button>
-</section>
+    <nav>
+      <div class="logo">Jagadeesh Kusupati</div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#" id="contactBtn">Contact</a></li>
 
-<section id="features">
-<h2>Features</h2>
-<div class="feature-grid">
-  <div class="feature-card">Responsive UI</div>
-  <div class="feature-card">Glassmorphism Design</div>
-  <div class="feature-card">Smooth Animations</div>
-  <div class="feature-card">Mobile Friendly</div>
-  <div class="feature-card">Fast Performance</div>
-  <div class="feature-card">Modern Development</div>
-</div>
-</section>
+      </ul>
+    </nav>
+  </header>
 
-<!-- CONTACT MODAL -->
+
+  <!-- HERO -->
+  <section id="hero">
+    <h1>Welcome to My Portfolio</h1>
+    <p>I design & build modern web applications with clean UI and smooth UX.</p>
+    <button onclick="scrollToSection('features')">✨ Explore Features</button>
+  </section>
+
+
+  <!-- FEATURES -->
+  <section id="features">
+    <h2>Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">Responsive UI</div>
+      <div class="feature-card">Glassmorphism Design</div>
+      <div class="feature-card">Smooth Animations</div>
+      <div class="feature-card">Mobile Friendly</div>
+      <div class="feature-card">Fast Performance</div>
+      <div class="feature-card">Modern Development</div>
+    </div>
+  </section>
+
+<!-- CONTACT FORM POPUP -->
 <div class="contact-modal" id="contactModal">
-<div class="contact-content">
-<span class="close-btn" id="closeModal">&times;</span>
-<h2>Contact Us</h2>
+  <div class="contact-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h2>Contact Us</h2>
 
-<form class="contact-form" onsubmit="return false;">
-<label>Name</label>
-<input id="name" type="text">
+    <form class="contact-form">
+      <label>Name :</label>
+      <input type="text" placeholder="Enter your name" required>
 
-<label>Mobile Number</label>
-<input id="mobile" type="tel">
+      <label>Mobile Number :</label>
+      <input type="tel" placeholder="Enter your mobile number" required>
 
-<label>Requirement</label>
-<textarea id="requirement"></textarea>
+      <label>Requirement :</label>
+      <textarea placeholder="Tell us your requirement" required></textarea>
 
-<div class="contact-buttons">
-  <button type="button" onclick="submitWhatsApp()">WhatsApp Submit</button>
-  <button type="button" onclick="submitEmail()">Email Submit</button>
-</div>
-</form>
-</div>
-</div>
-
-<footer>© Jagadeesh Kusupati 2025</footer>
-
-<!-- SUCCESS TOAST -->
-<div id="successPopup" class="toast"></div>
-
-<!-- THANK YOU -->
-<div id="thankYouScreen" class="thankyou">
-  <div class="thankyou-box">
-    <div class="tick">✔</div>
-    <h2>Thank You</h2>
-    <p>We received your request</p>
-    <p>We will contact you soon</p>
-    <button onclick="closeThankYou()">Close</button>
+      <button type="submit">Submit</button>
+      <div class="contact-buttons">
+  <button onclick="submitWhatsApp()">WhatsApp Submit</button>
+  <button onclick="submitEmail()">Email Submit</button>
+  
+    </div>
+    </form>
   </div>
 </div>
 
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    © Jagadeesh Kusupati 2025
+  </footer>
+
+
+<!-- Scroll & Contact Script -->
 <script>
+  /* ----- Smooth Scroll Button ----- */
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  }
 
-/* Smooth Scroll */
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
+  /* ----- Contact Modal Logic ----- */
+  const contactBtn = document.getElementById("contactBtn");
+  const contactModal = document.getElementById("contactModal");
+  const closeModal = document.getElementById("closeModal");
 
-/* Contact Modal Logic */
-contactBtn.onclick=()=>contactModal.style.display="flex";
-closeModal.onclick=()=>contactModal.style.display="none";
-window.onclick=e=>{if(e.target===contactModal)contactModal.style.display="none"};
+  contactBtn.onclick = () => contactModal.style.display = "flex";
+  closeModal.onclick = () => contactModal.style.display = "none";
 
-/* Toast Popup */
-function showSuccess(msg){
-  const p=document.getElementById("successPopup");
-  p.innerText=msg;
-  p.style.display="block";
-  p.style.opacity="1";
-  setTimeout(()=>{p.style.opacity="0";setTimeout(()=>p.style.display="none",400)},2000);
-}
-
-/* Thank You Screen */
-function showThankYou(){thankYouScreen.style.display="flex"}
-function closeThankYou(){thankYouScreen.style.display="none"}
-
-/* Get Form Data */
-function getFormData(){
-  return{
-    name:name.value.trim(),
-    mobile:mobile.value.trim(),
-    requirement:requirement.value.trim()
+  // Close modal when clicking outside the box
+  window.onclick = (e) => {
+    if (e.target === contactModal) {
+      contactModal.style.display = "none";
+    }
   };
-}
 
-/* Validation */
-function validateForm(d){
-  if(!d.name){alert("Enter your name");return false}
-  if(!d.mobile || d.mobile.length<10){alert("Enter valid mobile");return false}
-  if(!d.requirement){alert("Enter requirement");return false}
-  return true;
-}
-
-/* WHATSAPP SUBMIT */
-function submitWhatsApp(){
-
-  const d=getFormData();
-  if(!validateForm(d))return;
-
-  const msg=encodeURIComponent(
-`New Contact Request
-Name: ${d.name}
-Mobile: ${d.mobile}
-Requirement: ${d.requirement}`
-  );
-
-  const phone="919490556392";
-
-  // Mobile -> WhatsApp App
-  if(/Android|iPhone|iPad/i.test(navigator.userAgent)){
-    window.location.href=`whatsapp://send?phone=${phone}&text=${msg}`;
-  }
-  else{
-    // Desktop -> WhatsApp Web
-    window.open(`https://wa.me/${phone}?text=${msg}`,"_blank");
+  // ---- Smooth Scroll (your original function) ----
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   }
 
-  showSuccess("Message sent via WhatsApp");
-  showThankYou();
-}
+  // ---- Collect Form Data ----
+  function getFormData() {
+    return {
+      name: document.getElementById("name").value,
+      mobile: document.getElementById("mobile").value,
+      requirement: document.getElementById("requirement").value
+    };
+  }
 
-/* EMAIL SUBMIT */
-function submitEmail(){
+  // ---- WhatsApp Submit ----
+  function submitWhatsApp() {
+    const data = getFormData();
+    const msg = `Name: ${data.name}%0AMobile: ${data.mobile}%0ARequirement: ${data.requirement}`;
+    const whatsappURL = `https://wa.me/919490556393?text=${msg}`;
+    window.open(whatsappURL, "_blank");
+  }
 
-  const d=getFormData();
-  if(!validateForm(d))return;
+  // ---- Email Submit ----
+  function submitEmail() {
+    const data = getFormData();
+    const subject = encodeURIComponent("New Contact Request");
+    const body = encodeURIComponent(`Name: ${data.name}\nMobile: ${data.mobile}\nRequirement: ${data.requirement}`);
+    const mailtoURL = `mailto:someone@example.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL;
+  }
 
-  const body=encodeURIComponent(
-`Name: ${d.name}
-Mobile: ${d.mobile}
-Requirement: ${d.requirement}`
-  );
-
-  window.location.href=
-  `mailto:kusupatijagadeesh@gmail.com?subject=New Contact Request&body=${body}`;
-
-  showSuccess("Opening Email…");
-  showThankYou();
-}
 </script>
+
 
 </body>
 </html>

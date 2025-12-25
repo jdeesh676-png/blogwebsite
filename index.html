@@ -3,96 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jagadeesh Kusupati</title>
+  <title>Jagadeesh Kusupati - Glassmorphism</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      color:#fff;
+      background: linear-gradient(135deg,#003d66,#000);
+      background-attachment: fixed;
+      scroll-behavior:smooth;
+    }
+
+    /* ---------------- NAVBAR ---------------- */
+    header {
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    nav {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 40px;
+    }
+    nav .logo {
+      font-size:1.6rem; font-weight:700; color:#00eaff;
+      text-shadow:0 0 6px #00eaff;
+    }
+    nav ul { list-style:none; display:flex; gap:25px; }
+    nav a {
+      color:#fff; text-decoration:none; font-size:1rem;
+      padding:6px 12px; border-radius:8px; transition:0.3s;
+    }
+    nav a:hover {
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 10px rgba(0,238,255,0.5);
+    }
+
+    /* ---------------- HERO ---------------- */
+    #hero {
+      height:90vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:center; text-align:center;
+      padding:20px; color:#e6ffff;
+    }
+    #hero h1 {
+      font-size:3rem; margin-bottom:15px;
+      text-shadow:0 0 20px rgba(0,238,255,0.7);
+    }
+    #hero p {
+      max-width:600px; font-size:1.2rem; opacity:.95;
+    }
+    #hero button {
+      margin-top:35px; padding:14px 28px; font-size:1.1rem;
+      border:none; cursor:pointer; border-radius:10px;
+      color:#000; background:#00eaff; font-weight:600;
+      backdrop-filter:blur(8px);
+      box-shadow:0 0 12px rgba(0,238,255,0.8);
+      transition:0.3s;
+    }
+    #hero button:hover {
+      transform:scale(1.06);
+      box-shadow:0 0 20px rgba(0,238,255,1);
+    }
+
+    /* ---------------- FEATURES ---------------- */
+    #features {
+      padding:80px 20px;
+    }
+    #features h2 {
+      font-size:2rem; text-align:center; margin-bottom:35px;
+      text-shadow:0 0 10px rgba(255,255,255,0.5);
+    }
+    .feature-grid {
+      display:flex; justify-content:center; gap:25px;
+      flex-wrap:wrap;
+    }
+    .feature-card {
+      width:280px; padding:25px; text-align:center;
+      border-radius:18px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.3);
+      backdrop-filter:blur(12px);
+      box-shadow:0 0 12px rgba(0,238,255,0.3);
+      transition:0.3s;
+      font-size:1.1rem;
+    }
+    .feature-card:hover {
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(0,238,255,0.7);
+    }
+
+    /* ---------------- FOOTER ---------------- */
+    footer {
+      margin-top:70px; padding:25px; text-align:center;
+      background:rgba(255,255,255,0.05);
+      border-top:1px solid rgba(255,255,255,0.2);
+      backdrop-filter:blur(10px);
+    }
+  </style>
 </head>
 
-<body style="margin:0; font-family:Arial, sans-serif; background:#000; color:#fff; scroll-behavior:smooth;">
 
-  <!-- ==== NAVBAR (Dark + Neon Border) ==== -->
-  <header style="border-bottom:2px solid #00eaff; background:#050505e8; position:sticky; top:0; z-index:1000;">
-    <nav style="display:flex; justify-content:space-between; align-items:center; padding:15px 40px;">
-      <div style="font-size:1.4rem; font-weight:700; color:#00eaff;">
-        Jagadeesh Kusapati
-      </div>
+<body>
 
-      <ul style="list-style:none; display:flex; gap:25px; margin:0; padding:0;">
-        <li><a href="#hero" style="color:#fff; text-decoration:none; font-size:1rem;">Home</a></li>
-        <li><a href="#features" style="color:#fff; text-decoration:none; font-size:1rem;">Features</a></li>
-        <li><a href="#footer" style="color:#fff; text-decoration:none; font-size:1rem;">Contact</a></li>
+  <!-- NAV -->
+  <header>
+    <nav>
+      <div class="logo">Jagadeesh Kusupati</div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#footer">Contact</a></li>
       </ul>
     </nav>
   </header>
 
 
-  <!-- ==== HERO SECTION (Gradient + Neon CTA button) ==== -->
-  <section id="hero" 
-    style="background:linear-gradient(135deg,#003d66,#00111c,#000); height:90vh; display:flex;
-           flex-direction:column; justify-content:center; align-items:center; text-align:center;
-           color:#e6faff; padding:20px;">
-    
-    <h1 style="font-size:2.8rem; margin:0 0 15px 0; text-shadow:0 0 15px #00eaff;">
-      Welcome to My Portfolio
-    </h1>
-
-    <p style="font-size:1.3rem; width:80%; max-width:600px; opacity:0.9;">
-      I build modern and responsive web applications.
-    </p>
-
-    <button onclick="scrollToSection('features')"
-      style="margin-top:40px; padding:14px 30px; font-size:1.1rem; border:none; cursor:pointer;
-             border-radius:6px; background:#00eaff; color:#000; font-weight:600;
-             box-shadow:0 0 15px #00eaff; transition:0.25s;">
-      🚀 Explore Features
-    </button>
+  <!-- HERO -->
+  <section id="hero">
+    <h1>Welcome to My Portfolio</h1>
+    <p>I design & build modern web applications with clean UI and smooth UX.</p>
+    <button onclick="scrollToSection('features')">✨ Explore Features</button>
   </section>
 
-  <!-- ==== BASIC SCROLL FUNCTION ==== -->
+
+  <!-- FEATURES -->
+  <section id="features">
+    <h2>Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">Responsive UI</div>
+      <div class="feature-card">Glassmorphism Design</div>
+      <div class="feature-card">Smooth Animations</div>
+      <div class="feature-card">Mobile Friendly</div>
+      <div class="feature-card">Fast Performance</div>
+      <div class="feature-card">Modern Development</div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    © Jagadeesh Kusupati 2025
+  </footer>
+
+
+  <!-- Scroll Script -->
   <script>
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
   </script>
 
-</body>
-</html>
-
-
-<!-- === FEATURES SECTION (Dark Theme) === -->
-<section id="features" class="features" style="background: linear-gradient(135deg, #1a1a1a, #000000); padding: 60px 20px; color: #ffffff;">
-  <h2 style="text-align:center; margin-bottom: 40px; font-size: 2rem;"> Features</h2>
-
-  <div class="feature-grid" 
-      style="display: flex; justify-content:center; gap: 25px; flex-wrap: wrap;">
-    
-    <div class="feature-card"
-      style="background: #111111; padding: 25px 40px; border-radius: 12px;
-             box-shadow: 0 0 15px #00eaff; font-size: 1.2rem; transition: 0.3s;
-             cursor:pointer;">
-      Responsive Design
-    </div>
-
-    <div class="feature-card"
-      style="background: #111111; padding: 25px 40px; border-radius: 12px;
-             box-shadow: 0 0 15px #8b00ff; font-size: 1.2rem; transition: 0.3s;
-             cursor:pointer;">
-      Modern UI
-    </div>
-
-    <div class="feature-card"
-      style="background: #111111; padding: 25px 40px; border-radius: 12px;
-             box-shadow: 0 0 15px #ff007b; font-size: 1.2rem; transition: 0.3s;
-             cursor:pointer;">
-      Fast Performance
-    </div>
-
-  </div>
-</section>
-
-
-  <footer id="footer">
-    <p>© Jagadeesh Kusupati 2025 </p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

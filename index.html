@@ -1,239 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jagadeesh Kusupati - Glassmorphism</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jagadeesh Kusupati - Glassmorphism</title>
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: "Segoe UI", sans-serif;
-      color:#fff;
-      background: linear-gradient(135deg,#003d66,#000);
-      background-attachment: fixed;
-      scroll-behavior:smooth;
-    }
-
-    /* ---------------- NAVBAR ---------------- */
-    header {
-      position:sticky; top:0; z-index:1000;
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-    nav {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:15px 40px;
-    }
-    nav .logo {
-      font-size:1.6rem; font-weight:700; color:#00eaff;
-      text-shadow:0 0 6px #00eaff;
-    }
-    nav ul { list-style:none; display:flex; gap:25px; }
-    nav a {
-      color:#fff; text-decoration:none; font-size:1rem;
-      padding:6px 12px; border-radius:8px; transition:0.3s;
-    }
-    nav a:hover {
-      background:rgba(255,255,255,0.08);
-      backdrop-filter:blur(10px);
-      box-shadow:0 0 10px rgba(0,238,255,0.5);
-    }
-
-    /* ---------------- HERO ---------------- */
-    #hero {
-      height:90vh; display:flex; flex-direction:column;
-      justify-content:center; align-items:center; text-align:center;
-      padding:20px; color:#e6ffff;
-    }
-    #hero h1 {
-      font-size:3rem; margin-bottom:15px;
-      text-shadow:0 0 20px rgba(0,238,255,0.7);
-    }
-    #hero p {
-      max-width:600px; font-size:1.2rem; opacity:.95;
-    }
-    #hero button {
-      margin-top:35px; padding:14px 28px; font-size:1.1rem;
-      border:none; cursor:pointer; border-radius:10px;
-      color:#000; background:#00eaff; font-weight:600;
-      backdrop-filter:blur(8px);
-      box-shadow:0 0 12px rgba(0,238,255,0.8);
-      transition:0.3s;
-    }
-    #hero button:hover {
-      transform:scale(1.06);
-      box-shadow:0 0 20px rgba(0,238,255,1);
-    }
-
-    /* ---------------- FEATURES ---------------- */
-    #features { padding:80px 20px; }
-    #features h2 {
-      font-size:2rem; text-align:center; margin-bottom:35px;
-      text-shadow:0 0 10px rgba(255,255,255,0.5);
-    }
-    .feature-grid {
-      display:flex; justify-content:center; gap:25px;
-      flex-wrap:wrap;
-    }
-    .feature-card {
-      width:280px; padding:25px; text-align:center;
-      border-radius:18px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.3);
-      backdrop-filter:blur(12px);
-      box-shadow:0 0 12px rgba(0,238,255,0.3);
-      transition:0.3s;
-      font-size:1.1rem;
-    }
-    .feature-card:hover {
-      transform:translateY(-8px);
-      box-shadow:0 0 25px rgba(0,238,255,0.7);
-    }
-
-    /* ---------------- FOOTER ---------------- */
-    footer {
-      margin-top:70px; padding:25px; text-align:center;
-      background:rgba(255,255,255,0.05);
-      border-top:1px solid rgba(255,255,255,0.2);
-      backdrop-filter:blur(10px);
-    }
-
-    /* ---------- CONTACT FORM GLASS ---------- */
-    .contact-modal{
-      display:none;
-      position:fixed;
-      inset:0;
-      backdrop-filter:blur(6px);
-      background:rgba(0,0,0,0.5);
-      justify-content:center;
-      align-items:center;
-      z-index:999;
-    }
-
-    .contact-content{
-      width:350px;
-      padding:25px;
-      border-radius:20px;
-      background:rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.25);
-      backdrop-filter:blur(15px);
-      color:white;
-      animation:pop 0.35s ease;
-    }
-
-    @keyframes pop{
-      from{transform:scale(0.7); opacity:0;}
-      to{transform:scale(1); opacity:1;}
-    }
-
-    .close-btn{ float:right; font-size:28px; cursor:pointer; color:white; }
-
-    .contact-form{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top:15px;
-    }
-
-    .contact-form input,
-    .contact-form textarea{
-      padding:12px;
-      border:none; outline:none;
-      border-radius:10px;
-      color:white;
-      background:rgba(255,255,255,0.15);
-    }
-
-    .contact-buttons button{
-      margin-top:10px;
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      background:#00eaff;
-      color:black;
-      font-weight:600;
-      cursor:pointer;
-      box-shadow:0 0 12px rgba(0,238,255,0.8);
-    }
-
-    /* SUCCESS TOAST */
-.toast{
-  position:fixed;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  padding:14px 22px;
-  border-radius:14px;
-  background:rgba(0,255,200,.2);
-  border:1px solid rgba(0,255,200,.6);
-  backdrop-filter:blur(10px);
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Segoe UI",sans-serif;
   color:#fff;
-  font-weight:600;
-  display:none;
-  opacity:0;
-  transition:.4s;
+  background:linear-gradient(135deg,#003d66,#000);
+  background-attachment:fixed;
+  scroll-behavior:smooth;
 }
 
-/* THANK YOU OVERLAY */
-.thankyou{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  backdrop-filter:blur(8px);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+/* NAVBAR */
+header{
+  position:sticky;top:0;z-index:1000;
+  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.2)
+}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 40px}
+nav .logo{font-size:1.6rem;font-weight:700;color:#00eaff;text-shadow:0 0 6px #00eaff}
+nav ul{list-style:none;display:flex;gap:25px}
+nav a{
+  color:#fff;text-decoration:none;font-size:1rem;
+  padding:6px 12px;border-radius:8px;transition:.3s
+}
+nav a:hover{
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 10px rgba(0,238,255,.5)
 }
 
-/* THANK YOU CARD */
-.thankyou-box{
-  width:320px;
-  padding:25px;
-  border-radius:20px;
+/* HERO */
+#hero{
+  height:90vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:20px;color:#e6ffff
+}
+#hero h1{
+  font-size:3rem;margin-bottom:15px;
+  text-shadow:0 0 20px rgba(0,238,255,.7)
+}
+#hero p{max-width:600px;font-size:1.2rem;opacity:.95}
+#hero button{
+  margin-top:35px;padding:14px 28px;font-size:1.1rem;
+  border:none;cursor:pointer;border-radius:10px;
+  color:#000;background:#00eaff;font-weight:600;
+  box-shadow:0 0 12px rgba(0,238,255,.8);
+  transition:.3s
+}
+#hero button:hover{transform:scale(1.06);box-shadow:0 0 20px rgba(0,238,255,1)}
+
+/* FEATURES */
+#features{padding:80px 20px}
+#features h2{text-align:center;margin-bottom:35px;font-size:2rem}
+.feature-grid{display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
+.feature-card{
+  width:280px;padding:25px;text-align:center;border-radius:18px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(12px);
+  transition:.3s
+}
+.feature-card:hover{transform:translateY(-8px)}
+
+/* CONTACT MODAL */
+.contact-modal{
+  display:none;position:fixed;inset:0;
+  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,.5);
+  justify-content:center;align-items:center;z-index:999
+}
+.contact-content{
+  width:350px;padding:25px;border-radius:20px;
   background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.25);
-  backdrop-filter:blur(12px);
-  color:#fff;
-  text-align:center;
-  animation:zoomIn .4s ease;
+  backdrop-filter:blur(15px);
+}
+.close-btn{float:right;font-size:28px;cursor:pointer}
+.contact-form{display:flex;flex-direction:column;gap:12px;margin-top:15px}
+.contact-form input,
+.contact-form textarea{
+  padding:12px;border:none;border-radius:10px;
+  background:rgba(255,255,255,.15);color:#fff;
+}
+.contact-buttons button{
+  margin-top:8px;padding:12px;border:none;border-radius:10px;
+  background:#00eaff;color:#000;font-weight:700;cursor:pointer
 }
 
-/* SUCCESS TICK */
-.tick{
-  font-size:48px;
-  color:#00ff9c;
-  margin-bottom:10px;
-  text-shadow:0 0 15px #00ffcc;
+/* SUCCESS TOAST */
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+  padding:14px 22px;border-radius:14px;
+  background:rgba(0,255,200,.25);
+  border:1px solid rgba(0,255,200,.6);
+  backdrop-filter:blur(10px);
+  display:none;opacity:0;transition:.4s
 }
 
-/* BUTTON */
-.thankyou-box button{
-  margin-top:10px;
-  padding:10px 16px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  background:#00eaff;
-  color:#000;
-  font-weight:600;
+/* THANK YOU SCREEN */
+.thankyou{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);
+  backdrop-filter:blur(8px);display:none;
+  justify-content:center;align-items:center;z-index:9999
 }
-
-/* POP ANIMATION */
-@keyframes zoomIn{
-  from{ transform:scale(.6); opacity:0; }
-  to{ transform:scale(1); opacity:1; }
+.thankyou-box{
+  width:320px;padding:25px;border-radius:20px;
+  background:rgba(255,255,255,.12);
+  text-align:center
 }
+.tick{font-size:48px;color:#00ff9c}
 
-  </style>
+</style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <header>
   <nav>
     <div class="logo">Jagadeesh Kusupati</div>
@@ -245,199 +132,141 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="hero">
   <h1>Welcome to My Portfolio</h1>
-  <p>I design & build modern web applications with clean UI and smooth UX.</p>
+  <p>I design & build modern web applications.</p>
   <button onclick="scrollToSection('features')">✨ Explore Features</button>
 </section>
 
-<!-- FEATURES -->
 <section id="features">
   <h2>Features</h2>
   <div class="feature-grid">
     <div class="feature-card">Responsive UI</div>
     <div class="feature-card">Glassmorphism Design</div>
-    <div class="feature-card">Smooth Animations</div>
     <div class="feature-card">Mobile Friendly</div>
-    <div class="feature-card">Fast Performance</div>
-    <div class="feature-card">Modern Development</div>
   </div>
 </section>
 
-<!-- CONTACT FORM -->
+<!-- CONTACT MODAL -->
 <div class="contact-modal" id="contactModal">
   <div class="contact-content">
     <span class="close-btn" id="closeModal">&times;</span>
     <h2>Contact Us</h2>
 
     <form class="contact-form" onsubmit="return false;">
-      
-      <label>Name :</label>
-      <input id="name" type="text" placeholder="Enter your name" required>
+      <label>Name</label>
+      <input id="name" type="text">
 
-      <label>Mobile Number :</label>
-      <input id="mobile" type="tel" placeholder="Enter your mobile number" required>
+      <label>Mobile</label>
+      <input id="mobile" type="tel">
 
-      <label>Requirement :</label>
-      <textarea id="requirement" placeholder="Tell us your requirement" required></textarea>
+      <label>Requirement</label>
+      <textarea id="requirement"></textarea>
 
       <div class="contact-buttons">
         <button onclick="submitWhatsApp()">WhatsApp Submit</button>
         <button onclick="submitEmail()">Email Submit</button>
       </div>
-
     </form>
+
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer id="footer">
-  © Jagadeesh Kusupati 2025
-</footer>
+<footer>© Jagadeesh Kusupati 2025</footer>
 
-<!-- SCRIPT -->
-<script>
+<!-- SUCCESS POPUP -->
+<div id="successPopup" class="toast"></div>
 
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-/* POPUP SUCCESS TOAST */
-function showSuccess(msg){
-  const popup=document.getElementById("successPopup");
-  popup.innerText=msg;
-  popup.style.display="block";
-  popup.style.opacity="1";
-
-  setTimeout(()=>{
-    popup.style.opacity="0";
-    setTimeout(()=> popup.style.display="none",400);
-  },2000);
-}
-
-/* THANK YOU SCREEN */
-function showThankYou(){
-  document.getElementById("thankYouScreen").style.display="flex";
-}
-function closeThankYou(){
-  document.getElementById("thankYouScreen").style.display="none";
-}
-
-/* GET FORM DATA */
-function getFormData(){
-  return{
-    name: document.getElementById("name").value.trim(),
-    mobile: document.getElementById("mobile").value.trim(),
-    requirement: document.getElementById("requirement").value.trim()
-  };
-}
-
-/* FORM VALIDATION */
-function validateForm(data){
-
-  if(data.name === ""){
-    alert("Please enter your name");
-    return false;
-  }
-
-  if(data.mobile === "" || data.mobile.length < 10){
-    alert("Please enter valid mobile number");
-    return false;
-  }
-
-  if(data.requirement === ""){
-    alert("Please enter your requirement");
-    return false;
-  }
-
-  return true;
-}
-
-/* ---- WHATSAPP SUBMIT ---- */
-function submitWhatsApp(){
-
-  const data=getFormData();
-  if(!validateForm(data)) return;
-
-  const msg=encodeURIComponent(
-   `Name: ${data.name}
-Mobile: ${data.mobile}
-Requirement: ${data.requirement}`
-  );
-
-  const phone="919490556392";
-
-  const mobileURL=`whatsapp://send?phone=${phone}&text=${msg}`;
-  const webURL=`https://wa.me/${phone}?text=${msg}`;
-
-  const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  if(isMobile){
-    showSuccess("Opening WhatsApp…");
-    window.location.href=mobileURL;
-  } else {
-    showSuccess("Please continue on your mobile");
-    window.open(webURL,"_blank");
-  }
-
-  showThankYou();
-}
-
-/* ---- EMAIL SUBMIT ---- */
-function submitEmail(){
-
-  const data=getFormData();
-  if(!validateForm(data)) return;
-
-  const subject=encodeURIComponent("New Contact Request");
-  const body=encodeURIComponent(
-   `Name: ${data.name}
-Mobile: ${data.mobile}
-Requirement: ${data.requirement}`
-  );
-
-  showSuccess("Opening Email…");
-
-  window.location.href=
-  `mailto:kusupatijagadeesh@gmail.com?subject=${subject}&body=${body}`;
-
-  showThankYou();
-}
-
-</script>
-
-<div id="successPopup"
-style="
-position:fixed;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-padding:14px 22px;
-border-radius:14px;
-background:rgba(0,255,200,.25);
-border:1px solid rgba(0,255,200,.6);
-backdrop-filter:blur(10px);
-color:#fff;
-font-weight:600;
-letter-spacing:.5px;
-display:none;
-opacity:0;
-transition:.4s;">
-</div>
-<div id="successPopup" class="toast">
-  ✔ Message sent successfully
-</div>
-
-<!-- THANK YOU SCREEN -->
+<!-- THANK YOU -->
 <div id="thankYouScreen" class="thankyou">
   <div class="thankyou-box">
     <div class="tick">✔</div>
     <h2>Thank You</h2>
-    <p>We have received your request.</p>
     <p>We will contact you soon.</p>
     <button onclick="closeThankYou()">Close</button>
   </div>
 </div>
+
+<script>
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+/* OPEN / CLOSE CONTACT MODAL */
+const contactBtn=document.getElementById("contactBtn");
+const contactModal=document.getElementById("contactModal");
+const closeModal=document.getElementById("closeModal");
+
+contactBtn.onclick=()=>contactModal.style.display="flex";
+closeModal.onclick=()=>contactModal.style.display="none";
+window.onclick=e=>{if(e.target===contactModal)contactModal.style.display="none"};
+
+/* SUCCESS TOAST */
+function showSuccess(msg){
+  const p=document.getElementById("successPopup");
+  p.innerText=msg;
+  p.style.display="block";
+  p.style.opacity="1";
+  setTimeout(()=>{p.style.opacity="0";setTimeout(()=>p.style.display="none",400)},2000);
+}
+
+/* THANK YOU SCREEN */
+const showThankYou=()=>thankYouScreen.style.display="flex";
+const closeThankYou=()=>thankYouScreen.style.display="none";
+
+/* GET FORM DATA */
+function getFormData(){
+  return{
+    name:name.value.trim(),
+    mobile:mobile.value.trim(),
+    requirement:requirement.value.trim()
+  };
+}
+
+/* VALIDATION */
+function validateForm(d){
+  if(!d.name){alert("Enter name");return false}
+  if(!d.mobile || d.mobile.length<10){alert("Enter valid mobile");return false}
+  if(!d.requirement){alert("Enter requirement");return false}
+  return true;
+}
+
+/* WHATSAPP */
+function submitWhatsApp(){
+  const d=getFormData();
+  if(!validateForm(d))return;
+
+  const msg=encodeURIComponent(`Name: ${d.name}
+Mobile: ${d.mobile}
+Requirement: ${d.requirement}`);
+
+  const phone="919490556392";
+
+  if(/Android|iPhone|iPad/i.test(navigator.userAgent))
+    window.location.href=`whatsapp://send?phone=${phone}&text=${msg}`;
+  else
+    window.open(`https://wa.me/${phone}?text=${msg}`);
+
+  showSuccess("Opening WhatsApp…");
+  showThankYou();
+}
+
+/* EMAIL */
+function submitEmail(){
+  const d=getFormData();
+  if(!validateForm(d))return;
+
+  const body=encodeURIComponent(`Name: ${d.name}
+Mobile: ${d.mobile}
+Requirement: ${d.requirement}`);
+
+  window.location.href=
+  `mailto:kusupatijagadeesh@gmail.com?subject=New Contact&body=${body}`;
+
+  showSuccess("Opening email…");
+  showThankYou();
+}
+</script>
+
 </body>
 </html>

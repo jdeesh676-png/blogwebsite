@@ -4,29 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jagadeesh Kusupati</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Jagadeesh Kusupati</div>
-      <ul class="menu">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#footer">Contact</a></li>
+
+<body style="margin:0; font-family:Arial, sans-serif; background:#000; color:#fff; scroll-behavior:smooth;">
+
+  <!-- ==== NAVBAR (Dark + Neon Border) ==== -->
+  <header style="border-bottom:2px solid #00eaff; background:#050505e8; position:sticky; top:0; z-index:1000;">
+    <nav style="display:flex; justify-content:space-between; align-items:center; padding:15px 40px;">
+      <div style="font-size:1.4rem; font-weight:700; color:#00eaff;">
+        Jagadeesh Kusapati
+      </div>
+
+      <ul style="list-style:none; display:flex; gap:25px; margin:0; padding:0;">
+        <li><a href="#hero" style="color:#fff; text-decoration:none; font-size:1rem;">Home</a></li>
+        <li><a href="#features" style="color:#fff; text-decoration:none; font-size:1rem;">Features</a></li>
+        <li><a href="#footer" style="color:#fff; text-decoration:none; font-size:1rem;">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="hero" class="hero">
-    <h1>Welcome to My Portfolio</h1>
-    <p>I build modern and responsive web applications.</p>
-    <button onclick="scrollToSection('features')">Explore Features</button>
+
+  <!-- ==== HERO SECTION (Gradient + Neon CTA button) ==== -->
+  <section id="hero" 
+    style="background:linear-gradient(135deg,#003d66,#00111c,#000); height:90vh; display:flex;
+           flex-direction:column; justify-content:center; align-items:center; text-align:center;
+           color:#e6faff; padding:20px;">
+    
+    <h1 style="font-size:2.8rem; margin:0 0 15px 0; text-shadow:0 0 15px #00eaff;">
+      Welcome to My Portfolio
+    </h1>
+
+    <p style="font-size:1.3rem; width:80%; max-width:600px; opacity:0.9;">
+      I build modern and responsive web applications.
+    </p>
+
+    <button onclick="scrollToSection('features')"
+      style="margin-top:40px; padding:14px 30px; font-size:1.1rem; border:none; cursor:pointer;
+             border-radius:6px; background:#00eaff; color:#000; font-weight:600;
+             box-shadow:0 0 15px #00eaff; transition:0.25s;">
+      🚀 Explore Features
+    </button>
   </section>
+
+  <!-- ==== BASIC SCROLL FUNCTION ==== -->
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+</body>
+</html>
+
 
 <!-- === FEATURES SECTION (Dark Theme) === -->
 <section id="features" class="features" style="background: linear-gradient(135deg, #1a1a1a, #000000); padding: 60px 20px; color: #ffffff;">
-  <h2 style="text-align:center; margin-bottom: 40px; font-size: 2rem;">🔥 Features</h2>
+  <h2 style="text-align:center; margin-bottom: 40px; font-size: 2rem;"> Features</h2>
 
   <div class="feature-grid" 
       style="display: flex; justify-content:center; gap: 25px; flex-wrap: wrap;">
